@@ -1,4 +1,6 @@
 import { Router } from "express"
+import { body } from "express-validator"
+import { createProduct } from "./handlers/product"
 
 const router = Router()
 
@@ -7,9 +9,7 @@ router.get("/",(req,res) => {
     res.json("Desde Get")
 })
 
-router.post("/",(req,res) => {
-    res.json("Desde Post")
-})
+router.post("/",createProduct)
 
 router.put("/",(req,res) => {
     res.json("Desde Put")
