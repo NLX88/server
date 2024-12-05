@@ -11,7 +11,7 @@ router.get("/",(req,res) => {
 })
 
 router.post("/",
-   // /*
+    /*
     //validacion
     body("name").notEmpty()
     .withMessage("EL nombre del producto no puede ser vacio"),
@@ -20,8 +20,8 @@ router.post("/",
     body("price").isNumeric().withMessage("Valor no valido").notEmpty()
     .withMessage("El precio no puede ir vacio")
     .custom(value => value > 0).withMessage("El precio no puede ser 0"),
-    //*/
-    handleImputErrors,
+    */
+   // handleImputErrors,
     
     createProduct
 )
