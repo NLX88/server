@@ -1,13 +1,11 @@
-import {Request, Response, NextFunction} from "express"
-import { validationResult} from "express-validator"
-export const handleImputErrors = (req: Request, res: Response, next: NextFunction) => {
-    
-    
-    let errors = validationResult(req)
-    if(!errors.isEmpty()){
-        return res.status(400).json({errors: errors.array})
-    }
-        
+import { Request, Response, NextFunction } from 'express';
+import { validationResult } from 'express-validator';
 
-    next()
-}
+export const handleInputErrors = (req: Request, res: Response, next: NextFunction): void => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        res.status(400).json({ errors: errors.array() });
+        return; // Esto asegura que no continúe con `next()`
+    }
+    next();
+};
