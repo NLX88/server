@@ -5,13 +5,13 @@ import db from "./config/db";
 
 //Conectar a la base de datos
 
-async function ConnectionDB() {
+export async function ConnectionDB() {
     try{
         await db.authenticate()
         db.sync()
-        console.log(colors.bgMagenta("Conexion exitosa a la Base de Datos"))
+        //console.log(colors.bgMagenta("Conexion exitosa a la Base de Datos"))
     }catch(error){
-        console.log(error)
+        //console.log(error)
         console.log(colors.bgRed.white("Hubo un error al conectar a la Base de Datos"))
     }
 }
@@ -28,6 +28,10 @@ server.use(express.json())
 
 
 server.use("/api/products", router)
+
+server.get("/api", (req,res) => {
+    res.json({msg: "Desde API"})
+})
 
 export default server
 
